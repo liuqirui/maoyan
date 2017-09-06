@@ -5,8 +5,8 @@ import Router from 'vue-router'
 import Index from '@/components/maoyan/Index'
 
 //二级路由
-import User from '@/components/user/User';
 import Administrator from '@/components/administrator/Administrator';
+import User from '@/components/user/User';
 import Cinema from '@/components/cinema/Cinema';
 import Match from '@/components/match/Match';
 import Movie from '@/components/movie/Movie';
@@ -20,12 +20,12 @@ export default new Router({
                 component: Index,
                 children:[
                     {
-                      path: '/user',
-                    component: User,  
-                    },
-                    {
                       path: '/administrator',
                     component: Administrator,  
+                    },
+                    {
+                      path: '/user',
+                    component: User,  
                     },
                     {
                       path: '/cinema',
