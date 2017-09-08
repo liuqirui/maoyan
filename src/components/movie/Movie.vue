@@ -16,7 +16,7 @@
   <div  style="margin: 15px;">
   <el-button type="primary" @click="addMoviePage" size="small" icon="share">增加</el-button>
   <el-button type="primary" v-popover:popover @click="open"  size="small" icon="delete">删除</el-button>
-  <el-button type="primary" @click="updatePage" size="small" icon="search">修改</el-button>
+  <el-button type="primary" @click="updatePage" size="small" icon="edit">修改</el-button>
   <el-input placeholder="请输入内容" class='input' v-model="serinput">
     <el-select v-model="select" slot="prepend" class='selsect' placeholder="请选择">
       <el-option label="电影名" value="M_name"></el-option>
@@ -100,7 +100,6 @@
     <el-button type="primary" @click="updatemovie">确 定</el-button>
   </div>
 </div>
- 
   </div>
 </template>
 <script>
