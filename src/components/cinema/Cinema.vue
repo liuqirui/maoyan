@@ -121,11 +121,15 @@
 
             addim(e) {
                 this.title = "添加"
+                this.name_ipt = '';
+                this.phone_ipt = '';
+                this.ads_ipt = '';
+                this.web_ipt = '';
                 this.dialogVisible = !this.dialogVisible
                 this.opent = !this.opent
             },
             closeimm() {
-                
+
                 if (!this.multipleSelection.length) {
                     this.visible = true
 
@@ -141,38 +145,38 @@
             },
             closeim() {
 
-                
+
 
 
                 if (this.multipleSelection.length > 1) {
                     let ids = [];
-                    let ods=[];
+                    let ods = [];
                     for (let item of this.multipleSelection) {
                         ids.push(item._id)
-                        for(let indexx of item.fyt){
-                            
+                        for (let indexx of item.fyt) {
+
                             ods.push(indexx)
-                            
+
                         }
                     }
-                
+
                     this.$store.dispatch('deldt', ids)
                     this.$store.dispatch('delfyt', ods)
-                    
+
                     this.search(this.dq)
-                    
+
                 } else if (this.multipleSelection.length = 1) {
-                    let ods=[];
-                    
-                    for (let item of this.multipleSelection[0].fyt){
+                    let ods = [];
+
+                    for (let item of this.multipleSelection[0].fyt) {
                         ods.push(item)
                     }
-                    
-                    
-                   
-                    this.$store.dispatch('delfyt',ods)
+
+
+
+                    this.$store.dispatch('delfyt', ods)
                     this.$store.dispatch('delonly', this.multipleSelection[0]._id)
-                    
+
                     this.search(this.dq)
                 }
                 this.visible = false
@@ -195,6 +199,7 @@
                     });
                 } else {
                     this.upcia();
+
                 }
                 this.dialogVisible = !this.dialogVisible
                 this.opent = !this.opent
@@ -251,7 +256,7 @@
                 this.web_ipt = cia.O_web;
 
             },
-          
+
             //                   暂存选中的
             handleSelectionChange(val) {
 
@@ -262,11 +267,7 @@
             savecia() {
                 if (this.title == "添加") {
                     this.savefs('a_addcia');
-                    //下面注释四行代码不要删除，解除注释后添加完数据后文本框清空
-                                        this.name_ipt = '';
-                                        this.phone_ipt = '';
-                                        this.ads_ipt = '';
-                                        this.web_ipt = '';
+
                 }
                 if (this.title == "修改") {
                     this.savefs('a_upcia', this.multipleSelection[0]._id);
@@ -281,7 +282,7 @@
                     C_ads: this.ads_ipt,
 
                     O_web: this.web_ipt,
-                  
+
                 }
                 if (id) {
                     obj._id = id
