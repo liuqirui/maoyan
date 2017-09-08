@@ -161,7 +161,7 @@
                     }
 
                     this.$store.dispatch('deldt', ids)
-                    this.$store.dispatch('delfyt', ods)
+                    this.$store.dispatch('delfytzhao', ods)
 
                     this.search(this.dq)
 
@@ -174,7 +174,7 @@
 
 
 
-                    this.$store.dispatch('delfyt', ods)
+                    this.$store.dispatch('delfytzhao', ods)
                     this.$store.dispatch('delonly', this.multipleSelection[0]._id)
 
                     this.search(this.dq)

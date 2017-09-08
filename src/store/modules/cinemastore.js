@@ -47,7 +47,7 @@ const store = {
             axios.get('http://127.0.0.1:3000/cinema/del', {params: {ids}})
         },
         //删除绑定ID的放映厅
-         delfyt({commit},ids){
+         delfytzhao({commit},ids){
              
             axios.get('http://127.0.0.1:3000/fyt/del', {params: {ids}})
         },
