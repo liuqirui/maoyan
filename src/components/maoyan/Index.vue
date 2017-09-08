@@ -1,10 +1,10 @@
 <template>
    <div>
     <el-row>
-      <el-col :span="24"><div class="top"><img src="../../img/55fbe8a6d099d_02.gif.png" alt=""></div></el-col>
+      <el-col :span="24"><div class="maoyantop"><img src="../../img/55fbe8a6d099d_02.gif.png" alt=""></div></el-col>
           <el-col :span="4">
              <div  class='nav'>
-              <el-menu default-active="2" class="el-menu-vertical-demo" theme="dark">
+              <el-menu default-active="" class="el-menu-vertical-demo" theme="dark">
               <router-link to='/administrator'><el-menu-item index="1">管理员账户</el-menu-item></router-link>
               <router-link to='/user'><el-menu-item index="2">用户管理</el-menu-item></router-link>
               <router-link to='/movie'><el-menu-item index="3">电影管理</el-menu-item></router-link>
@@ -35,19 +35,21 @@
 
 </script>
 <style>
-    .top{
-        height:150px;
-    }
-    .top > img{
+    
+    .maoyantop> img{
        width: 100%;
         height:150px;
+    }
+    .maoyantop{
+        overflow: hidden;
+          height:150px;
     }
     a{
         text-decoration: none
     }
     .nav{
-        min-height:700px;
-        background-color: #324054
+        min-height:720px;
+        background-color: #324054;
     }
     .main{
         min-height:700px;

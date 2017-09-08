@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 //一级路由
 import Index from '@/components/maoyan/Index'
+import Login from '@/components/login/Login'
+import Reg from '@/components/reg/Reg'
 
 //二级路由
 import Administrator from '@/components/administrator/Administrator';
@@ -15,33 +17,41 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-            {
-                path: '/',
-                component: Index,
-                children:[
-                    {
-                      path: '/administrator',
-                    component: Administrator,  
+        {
+            path: '/login',
+            component: Login,
                     },
-                    {
-                      path: '/user',
-                    component: User,  
+        {
+            path: '/reg',
+            component: Reg,
                     },
-                    {
-                      path: '/cinema',
-                    component: Cinema,  
+        {
+            path: '/',
+            component: Index,
+            children: [
+                {
+                    path: '/administrator',
+                    component: Administrator,
                     },
-                    {
-                      path: '/match',
-                    component: Match,  
+                {
+                    path: '/user',
+                    component: User,
                     },
-                    {
-                      path: '/movie',
-                    component: Movie,  
+                {
+                    path: '/cinema',
+                    component: Cinema,
                     },
-                    {
-                      path: '/screens',
-                    component: Screens,  
+                {
+                    path: '/match',
+                    component: Match,
+                    },
+                {
+                    path: '/movie',
+                    component: Movie,
+                    },
+                {
+                    path: '/screens',
+                    component: Screens,
                     }
                 ]
            }
