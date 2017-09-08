@@ -125,7 +125,7 @@
                 this.opent = !this.opent
             },
             closeimm() {
-                console.log(this.multipleSelection)
+                
                 if (!this.multipleSelection.length) {
                     this.visible = true
 
@@ -141,43 +141,7 @@
             },
             closeim() {
 
-                //                if (!this.multipleSelection.length) {
-                //                    return this.$message({
-                //                        showClose: true,
-                //                        message: '请选择你要删除的信息！',
-                //                        duration: 1500
-                //                    });
-                //                } else {
-                //                    this.$confirm('此操作将永久删除选中的影院, 是否继续?', '提示', {
-                //                        confirmButtonText: '确定',
-                //                        cancelButtonText: '取消',
-                //                        type: 'warning'
-                //                    }).then(() => {
-                //                        if (this.multipleSelection.length > 1) {
-                //                            let ids = [];
-                //                            for (let item of this.multipleSelection) {
-                //                                ids.push(item._id)
-                //                            }
-                //                            this.$store.dispatch('deldt', ids)
-                //                               this.search(this.dq)
-                //                        } else if (this.multipleSelection.length = 1) {
-                //                            this.$store.dispatch('delonly', this.multipleSelection[0]._id)
-                //                            this.search(this.dq)
-                //                        }
-                //                        this.$message({
-                //                            type: 'success',
-                //                            message: '删除成功!'
-                //                        });
-                //                        console.log(123)
-                //                    }).catch(() => {
-                //
-                //                        this.$message({
-                //
-                //                            type: 'info',
-                //                            message: '已取消删除'
-                //                        });
-                //                    });
-                //                }
+                
 
 
                 if (this.multipleSelection.length > 1) {
@@ -191,7 +155,7 @@
                             
                         }
                     }
-                    console.log(ods)
+                
                     this.$store.dispatch('deldt', ids)
                     this.$store.dispatch('delfyt', ods)
                     
@@ -205,7 +169,7 @@
                     }
                     
                     
-                    console.log(ods)
+                   
                     this.$store.dispatch('delfyt',ods)
                     this.$store.dispatch('delonly', this.multipleSelection[0]._id)
                     
@@ -287,9 +251,7 @@
                 this.web_ipt = cia.O_web;
 
             },
-            ilikered() {
-                console.log("123")
-            },
+          
             //                   暂存选中的
             handleSelectionChange(val) {
 
@@ -301,10 +263,10 @@
                 if (this.title == "添加") {
                     this.savefs('a_addcia');
                     //下面注释四行代码不要删除，解除注释后添加完数据后文本框清空
-                    //                    this.name_ipt = '';
-                    //                    this.phone_ipt = '';
-                    //                    this.ads_ipt = '';
-                    //                    this.web_ipt = '';
+                                        this.name_ipt = '';
+                                        this.phone_ipt = '';
+                                        this.ads_ipt = '';
+                                        this.web_ipt = '';
                 }
                 if (this.title == "修改") {
                     this.savefs('a_upcia', this.multipleSelection[0]._id);

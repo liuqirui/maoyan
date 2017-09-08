@@ -28,7 +28,7 @@ const store = {
         }, 
 //        添加院线 
         a_addcia({commit}, obj) {
-                console.log(obj)
+                
                 axios.get('http://127.0.0.1:3000/cinema/add', {params: {
                     C_name:obj.C_name,
                     O_phone:obj.O_phone,
@@ -46,9 +46,9 @@ const store = {
         deldt({commit},ids){
             axios.get('http://127.0.0.1:3000/cinema/del', {params: {ids}})
         },
-        //删除放映厅
+        //删除绑定ID的放映厅
          delfyt({commit},ids){
-             console.log(ids)
+             
             axios.get('http://127.0.0.1:3000/fyt/del', {params: {ids}})
         },
 //        分页查询
@@ -56,7 +56,7 @@ const store = {
                     sss.rows=10;
                     if(sss.age){
                        sss.age=parseInt(sss.age) 
-                        console.log(sss.age)
+                        
                     }
                     var users = await axios.get('http://127.0.0.1:3000/cinema/find', {
                         params: sss
