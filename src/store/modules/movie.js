@@ -21,7 +21,7 @@ const store = {
             commit,
             state
         }) {
-            var movies = await axios.get('http://127.0.0.1:3000/movie/find', {
+            var movies = await axios.get('/movie/find', {
                 params: {
                     page: state.page,
                     rows: 10
@@ -38,7 +38,7 @@ const store = {
             commit
         }, obj) {
             let newmovie = obj.item
-            var movies = await axios.get('http://127.0.0.1:3000/movie/add', {
+            var movies = await axios.get('/movie/add', {
                 params: { ...newmovie}
             })
             commit('movie', {
@@ -52,7 +52,7 @@ const store = {
             commit,
             state
         }, obj) {
-            var movies = await axios.get('http://127.0.0.1:3000/movie/find', {
+            var movies = await axios.get('/movie/find', {
                 params: {
                     page: obj.page,
                     rows: 10
@@ -71,12 +71,12 @@ const store = {
             actions
         }, obj) {
           if(obj.id){
-            var movie = await axios.get('http://127.0.0.1:3000/movie/del', {
+            var movie = await axios.get('/movie/del', {
                 params: {
                     ids: [obj.id]
                 }
             })
-            var movies = await axios.get('http://127.0.0.1:3000/movie/find', {
+            var movies = await axios.get('/movie/find', {
                 params: {
                     page: 1,
                     rows: 10
@@ -95,7 +95,7 @@ const store = {
             state
         }, obj) {
           let newmovie = obj.item
-            var movies = await axios.get('http://127.0.0.1:3000/movie/update', {
+            var movies = await axios.get('/movie/update', {
                 params: { ...newmovie}
             })
             commit('movie', {
@@ -112,7 +112,7 @@ const store = {
         }, obj) {
           let condition = obj.condition
           console.log(condition)
-            var movies = await axios.get('http://127.0.0.1:3000/movie/find', {
+            var movies = await axios.get('/movie/find', {
                 params:{ page:obj.page,
                     rows: 10,...condition}
             })
