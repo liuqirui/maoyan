@@ -80,7 +80,8 @@
 			@current-change="handleCurrentChange"
 			layout="prev, pager, next"
 			:maxpage="match.match_maxpage"
-			:total="match.match_total">
+			:total="match.match_total"
+			id="xiabiaonum">
 		</el-pagination>
 		
 		<div v-if="state">
@@ -343,5 +344,8 @@
 		height: 20px;
 		background: red;
 		margin: 8px;
+	}
+	#xiabiaonum{
+		margin-left: 44%;
 	}
 </style>
