@@ -62,8 +62,8 @@
 			width="180">
 		  </el-table-column>
 		  <el-table-column
-			prop="area"
-			label="上映地点"
+			prop="S_time"
+			label="上映时间"
 			width="">
 		  </el-table-column>
 		  <el-table-column
