@@ -31,6 +31,7 @@
                 :stripe=true
                 :data="cinema"
                 border
+                @row-click="oncliic"
                 tooltip-effect="dark"
                 style="width: 100%"
                 @selection-change="handleSelectionChange">
@@ -118,6 +119,9 @@
             }
         },
         methods: {
+            oncliic(row){
+                  this.$refs.multipleTable.toggleRowSelection(row);
+            },
 
             addim(e) {
                 this.title = "添加"
