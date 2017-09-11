@@ -122,7 +122,7 @@
 				  label="操作"
 				  width="130">
 				  <template scope="scope">
-					<el-button @click="check(scope.$index, scope.row)" type="text" size="small">查看座位</el-button>
+					<el-button v-popover:popover4 @click="check(scope.$index, scope.row)" type="text" size="small">查看座位</el-button>
 				  </template>
 				</el-table-column>
 			</el-table>
@@ -131,7 +131,9 @@
 			  placement="right"
 			  width="400"
 			  trigger="click">
-			  <div style="width:400px;background: #D3DCE6;"></div>
+			  <div style="width:400px;background: #D3DCE6;">
+			  	<p>11111111111111111111111</p>
+			  </div>
 			</el-popover>
 		</div>
 	</div>
