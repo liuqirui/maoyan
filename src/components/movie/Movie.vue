@@ -73,8 +73,10 @@
          <el-form-item label="时长" label-width="100px"><el-input v-model="form.W_long" auto-complete="off"></el-input></el-form-item>
           <el-form-item label="上映时间" label-width="100px"><el-input v-model="form.S_time" auto-complete="off"></el-input></el-form-item>
            <el-form-item label="电影票房" label-width="100px"><el-input v-model="form.box_office" auto-complete="off"></el-input></el-form-item>
+<!--
            <el-form-item label="电影图片"  v-if='updatebtn'  label-width="100px"><el-input class='imges' :rows='3'  type="textarea"  v-model="form.M_cover" auto-complete="off"></el-input></el-form-item>
            <el-form-item label="导演演员图片"  v-if='updatebtn' label-width="100px"><el-input class='imges' :rows='3'  type="textarea"  v-model="form.A_img" auto-complete="off"></el-input></el-form-item>
+-->
            <el-form-item label="电影简介" label-width="100px"><el-input class='text' :rows='4'  type="textarea"  v-model="form.det" auto-complete="off"></el-input></el-form-item>
   </el-form>
   <div class='upload'  v-if='addbtn' ><el-upload
