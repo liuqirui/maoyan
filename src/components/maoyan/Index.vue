@@ -5,10 +5,10 @@
           <el-col :span="4">
              <div  class='nav'>
               <el-menu default-active="3" class="el-menu-vertical-demo" theme="dark">
-              <router-link to='/movie'><el-menu-item index="3">电影管理</el-menu-item></router-link>
-              <router-link to='/cinema'><el-menu-item index="4">影院管理</el-menu-item></router-link> 
-              <router-link to='/screens'><el-menu-item index="5">影厅信息</el-menu-item></router-link>
-              <router-link to='/match'><el-menu-item index="6">排片信息</el-menu-item></router-link>
+              <router-link to='/movie'><el-menu-item class="el-icon-caret-right" index="3"> 电影管理</el-menu-item></router-link>
+              <router-link to='/cinema' ><el-menu-item class="el-icon-caret-right" index="4"> 影院管理</el-menu-item></router-link> 
+              <router-link to='/screens'><el-menu-item class="el-icon-caret-right" index="5"> 影厅信息</el-menu-item></router-link>
+              <router-link to='/match'><el-menu-item class="el-icon-caret-right" index="6"> 排片信息</el-menu-item></router-link>
             </el-menu>
         </div>
       </el-col>
@@ -43,13 +43,19 @@
           height:150px;
     }
     a{
-        text-decoration: none
+        text-decoration: none;
+    }
+    a li{
+        
+        width: 100%;
+        display: inline-block
     }
     .nav{
-        min-height:720px;
+        min-height:750px;
         background-color: #324054;
     }
     .main{
-        min-height:700px;
+        min-height:750px;
+        padding: 20px;
     }
 </style>
