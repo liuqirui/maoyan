@@ -88,6 +88,7 @@
 			<el-table
 			  :data="match.match_matchingData"
 			  border
+			  max-height="310"
 			  style="width: 100%">
 			  <el-table-column
 				prop="m_name"
@@ -97,7 +98,7 @@
 			  <el-table-column
 				prop="c_name"
 				label="电影院"
-				width="160">
+				width="200">
 			  </el-table-column>
 			  <el-table-column
 				prop="f_name"
@@ -112,7 +113,7 @@
 			  <el-table-column
 				prop="datetime"
 				label="日期"
-				width="180">
+				width="160">
 			  </el-table-column>
 			  <el-table-column
 				prop="detailedtimes"
