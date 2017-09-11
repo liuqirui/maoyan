@@ -24,12 +24,12 @@ const store = {
     actions: {
         //修改院线
         a_upcia({commit},obj){
-             axios.get('http://127.0.0.1:3000/cinema/update', {params: obj})
+             axios.get('/cinema/update', {params: obj})
         }, 
 //        添加院线 
         a_addcia({commit}, obj) {
                 
-                axios.get('http://127.0.0.1:3000/cinema/add', {params: {
+                axios.get('/cinema/add', {params: {
                     C_name:obj.C_name,
                     O_phone:obj.O_phone,
                     C_ads:obj.C_ads,
@@ -40,16 +40,16 @@ const store = {
         },
 //        单条删除
          delonly({commit},id){
-            axios.get('http://127.0.0.1:3000/cinema/del', {params: {_id:id}})
+            axios.get('/cinema/del', {params: {_id:id}})
          },
 //        多条删除
         deldt({commit},ids){
-            axios.get('http://127.0.0.1:3000/cinema/del', {params: {ids}})
+            axios.get('/cinema/del', {params: {ids}})
         },
         //删除绑定ID的放映厅
          delfytzhao({commit},ids){
              
-            axios.get('http://127.0.0.1:3000/fyt/del', {params: {ids}})
+            axios.get('/fyt/del', {params: {ids}})
         },
 //        分页查询
         async bm({commit},sss){
@@ -58,7 +58,7 @@ const store = {
                        sss.age=parseInt(sss.age) 
                         
                     }
-                    var users = await axios.get('http://127.0.0.1:3000/cinema/find', {
+                    var users = await axios.get('/cinema/find', {
                         params: sss
                     })
                    commit('m_arycia',{

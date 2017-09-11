@@ -62,7 +62,7 @@ const store = {
 //       主页数据 初始化
         async[A_GETCINEMAS]({commit,dispatch},obj) {
             obj.rows = 10;     
-            var datas = await axios.get('http://127.0.0.1:3000/cinema/find', {
+            var datas = await axios.get('/cinema/find', {
                 params: obj,   
             })
             commit('m_getcinemas', {
@@ -77,7 +77,7 @@ const store = {
       async a_lookfyt({commit,dispatch},obj){
           let ary =[];
           for(let item of obj.fyt){
-          var datas = await axios.get('http://127.0.0.1:3000/fyt/find', {
+          var datas = await axios.get('/fyt/find', {
                 params: {_id:item},   
             })
                 datas.data.yx=obj
@@ -102,7 +102,7 @@ const store = {
                 return ary
             }
    
-            var datas = await axios.get('http://127.0.0.1:3000/fyt/add', {
+            var datas = await axios.get('/fyt/add', {
                 params:{
                     fname:obj.fname,
                     C_id:obj.rows._id,
@@ -117,7 +117,7 @@ const store = {
         
 //     影院绑定关联的放映厅的ID
        async saveId({commit},ids){
-            var datas = await axios.get('http://127.0.0.1:3000/cinema/update', {             
+            var datas = await axios.get('/cinema/update', {             
                 params:{
                     _id:ids.C_id,
                     isPush: true,
@@ -135,14 +135,14 @@ const store = {
                }
            }
 //        
-            let dataYx = await axios.get('http://127.0.0.1:3000/cinema/update',{params:{_id:obj.yx._id,fyt:ary}})
-            let dataFyt = await axios.get('http://127.0.0.1:3000/fyt/del',{params:{_id:obj._id}})
+            let dataYx = await axios.get('/cinema/update',{params:{_id:obj.yx._id,fyt:ary}})
+            let dataFyt = await axios.get('/fyt/del',{params:{_id:obj._id}})
             commit("m_delfyt",obj)     
        },
         
 //        修改影厅名字
        async upfty({commit},obj){
-          let datas = await axios.get('http://127.0.0.1:3000/fyt/update',{params:{_id:obj.rows2._id,fname:obj.val}})
+          let datas = await axios.get('/fyt/update',{params:{_id:obj.rows2._id,fname:obj.val}})
           commit("m_upfyt",obj)
        }
 
