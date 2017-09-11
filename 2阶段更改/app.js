@@ -15,14 +15,14 @@ var app = express();
 
 
 //允许所有js来进行访问
-	app.all('*', function(req, res, next) {
-	    res.header("Access-Control-Allow-Origin", "*");
-	    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-	    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-	    res.header("X-Powered-By",' 3.2.1')
-	    if(req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
-	    else  next();
-	});
+//	app.all('*', function(req, res, next) {
+//	    res.header("Access-Control-Allow-Origin", "*");
+//	    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+//	    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+//	    res.header("X-Powered-By",' 3.2.1')
+//	    if(req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
+//	    else  next();
+//	});
 //也可以这样，允许部分IP地址的端口来访问(白名单模式/多个名单)
 //	var allowCrossDomain = function(req, res, next) {54535
 //	    
