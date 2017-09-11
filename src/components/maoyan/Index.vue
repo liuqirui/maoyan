@@ -4,9 +4,7 @@
       <el-col :span="24"><div class="maoyantop"><img src="../../img/55fbe8a6d099d_02.gif.png" alt=""></div></el-col>
           <el-col :span="4">
              <div  class='nav'>
-              <el-menu default-active="" class="el-menu-vertical-demo" theme="dark">
-              <router-link to='/administrator'><el-menu-item index="1">管理员账户</el-menu-item></router-link>
-              <router-link to='/user'><el-menu-item index="2">用户管理</el-menu-item></router-link>
+              <el-menu default-active="3" class="el-menu-vertical-demo" theme="dark">
               <router-link to='/movie'><el-menu-item index="3">电影管理</el-menu-item></router-link>
               <router-link to='/cinema'><el-menu-item index="4">影院管理</el-menu-item></router-link> 
               <router-link to='/screens'><el-menu-item index="5">影厅信息</el-menu-item></router-link>

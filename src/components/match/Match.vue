@@ -82,7 +82,9 @@
 			:maxpage="match.match_maxpage"
 			:total="match.match_total">
 		</el-pagination>
+		
 		<div v-if="state">
+			
 			<el-table
 			  :data="match.match_matchingData"
 			  border
@@ -122,19 +124,21 @@
 				  label="操作"
 				  width="130">
 				  <template scope="scope">
-					<el-button v-popover:popover4 @click="check(scope.$index, scope.row)" type="text" size="small">查看座位</el-button>
-				  </template>
-				</el-table-column>
-			</el-table>
 			<el-popover
 			  ref="popover4"
 			  placement="right"
-			  width="400"
 			  trigger="click">
-			  <div style="width:400px;background: #D3DCE6;">
-			  	<p>11111111111111111111111</p>
+			  <div v-for="(item,index) in match_fdata"  class="row">
+			  		<div v-for="(val,indexs) in item">
+			  			<div v-if="val.flay" class="iscol"></div>
+			  			<div v-else class="col"></div>
+			  		</div>
 			  </div>
 			</el-popover>
+					<el-button @click="check(scope.$index, scope.row)" v-popover:popover4 type="text" size="small">查看座位</el-button>
+				  </template>
+				</el-table-column>
+			</el-table>
 		</div>
 	</div>
 </template>
@@ -171,7 +175,8 @@
 					return time.getTime() < Date.now() - 8.64e7;
 				  }
 				},
-				match_date:""
+				match_date:"",
+				match_fdata:[]
             }
         },
         methods: {
@@ -303,7 +308,8 @@
 				this.$store.dispatch('ASYNC_FINDMATCHING_LIST',row._id)
 			},
 			check(index,row){
-				console.log(row.m_fdata)
+				this.match_fdata = row.m_fdata
+				console.log(this.match_fdata)
 			}
         },
         computed:mapState([
@@ -321,5 +327,20 @@
 	}
 	#match_price_input{
 		width: 217px;
+	}
+	.row{
+		display: flex;
+	}
+	.col{
+		width: 20px;
+		height: 20px;
+		background: #666;
+		margin: 8px;
+	}
+	.iscol{
+		width: 20px;
+		height: 20px;
+		background: red;
+		margin: 8px;
 	}
 </style>

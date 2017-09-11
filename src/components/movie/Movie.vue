@@ -77,7 +77,7 @@
   </el-form>
   <div class='upload'  v-if='addbtn' ><el-upload
   class="upload-demo"
-  action="http://127.0.0.1:3000/upload"
+  action="/upload"
   :on-remove="handleRemove"
   :on-success="handle"
   list-type="picture">
@@ -85,7 +85,7 @@
 </el-upload></div>
    <div  class='upload'  v-if='addbtn'><el-upload
   class="upload-demo"
-  action="http://127.0.0.1:3000/upload"
+  action="/upload"
   :on-remove="actorhandleRemove"
   :on-success="actorhandle"
   list-type="picture">
