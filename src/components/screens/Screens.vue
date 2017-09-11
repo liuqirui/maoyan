@@ -33,7 +33,7 @@
           <el-card>
                 <div slot="header" class="clearfix">
                     <span style="line-height:30px;font-weight:bold;font-size:30px;margin-left:100px;">{{C_name}}</span>
-                    <el-button size="small"  icon="caret-left" @click="toindex" style="float:left;" :disabled="isdisabled">返回首页</el-button>
+                    <el-button size="small"  icon="caret-left" @click="toindex" style="float:left;" v-if="isdisabled">返回首页</el-button>
                 </div>
 
                  <div v-if="isShow">
@@ -89,6 +89,7 @@
                 </div>                   
              </el-card>
             
+<!--
             <el-popover
                   ref="popover5"
                   placement="top"
@@ -96,11 +97,14 @@
                   v-model="visible2">
                   <p>是否确定删除选中的这些影厅？</p>
                   <div style="text-align: right; margin: 0">
-                        <el-button size="mini" type="text" @click="visible2 = false">取消</el-button>
                         <el-button type="primary" size="mini" @click="delfyt">确定</el-button>
+                        <el-button size="mini" type="text" @click="visible2 = false">取消</el-button>
+   
                   </div>
             </el-popover>
-            <el-button v-popover:popover5 size="small" icon="delete" @click="ischeck" style="margin:20px;">移除</el-button>
+            <el-button v-if="isdisabled" v-popover:popover5 size="small" icon="delete" @click="ischeck" style="margin:20px;">移除</el-button>
+-->
+            <el-button v-if="isdisabled"  size="small" icon="delete" @click="delfyt" style="margin:20px;">移除</el-button>
      </div>
   
  </div>
@@ -133,9 +137,9 @@
         },
         data() {
             return {
-                visible2: false,
+                visible2: true,
                 multipleSelection: [],
-                isdisabled:false,
+                isdisabled:true,
                 currentPage :1,
                 dialogVisible: false,
                 name_ipt: '',
@@ -181,7 +185,8 @@
             },
 //            座位预览
             showset(row){
-                this.isdisabled=true;
+                this.multipleSelection=[];
+                this.isdisabled=false;
                 this.isShow = false;
                 this.rows2 = row;
             },    
@@ -197,34 +202,67 @@
           },   
 //            关闭座位预览
             closeshow(e){
-                this.isdisabled=false;
+                this.isdisabled=true;
                 this.isShow = true;
                 this.rows2={};
+                this.visible2=false;
+                this.multipleSelection=[];
             },
 //            选中
            ischeck(){
-                if(!this.multipleSelection.length){
+                if(!this.multipleSelection.length){    
+                    this.visible2 = false;
                     this.visible2 = true;
-                    return this.$message({
+                    this.$message({
                         showClose: true,
                         message: '请选择你要删除的信息！',
                         duration: 1500
                     });
                 }
             },
-//            移除影厅
+////            移除影厅
+//           delfyt(){
+//               if(this.multipleSelection.length ==1){
+//                         this.$store.dispatch("a_delfyts",this.multipleSelection[0]) 
+//               }else if(this.multipleSelection.length > 1){
+//                         this.$store.dispatch("a_delduotiao",this.multipleSelection) 
+//               }
+//               this.$message({
+//                        type: 'success',
+//                        message: '删除成功!'
+//                    });    
+//               this.visible2=false;
+//            },  
+            //            移除影厅
            delfyt(){
-               if(this.multipleSelection.length ==1){
-                         this.$store.dispatch("a_delfyts",this.multipleSelection[0]) 
-               }else if(this.multipleSelection.length > 1){
-                         this.$store.dispatch("a_delduotiao",this.multipleSelection) 
+               if(!this.multipleSelection.length){
+                   return this.$message({
+                        showClose: true,
+                        message: '请选择你要删除的影厅！',
+                        duration: 1500
+                    });
                }
-               this.$message({
-                        type: 'success',
-                        message: '删除成功!'
-                    });    
-               this.visible2=false;
-            },         
+               this.$confirm('此操作将永久删除选择的影厅, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'
+                }).then(() => {
+                   if(this.multipleSelection.length ==1){
+                         this.$store.dispatch("a_delfyts",this.multipleSelection[0]) 
+                   }else{
+                         this.$store.dispatch("a_delduotiao",this.multipleSelection) 
+                   }
+                  this.$message({
+                    type: 'success',
+                    message: '删除成功!'
+                  });
+                }).catch(() => {
+                  this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                  });          
+                });
+            },   
 //           添加影厅
             addfyt() {
                 if(this.ipt1 == ""){
