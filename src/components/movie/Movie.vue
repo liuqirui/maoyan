@@ -36,6 +36,7 @@
     <el-table-column  show-overflow-tooltip   property="E_name" label="电影英文名" width="120">   </el-table-column>
     <el-table-column width="120" show-overflow-tooltip property="M_type" label="电影类型"></el-table-column>
     <el-table-column width="70" show-overflow-tooltip property="M_grade" label="评分"></el-table-column>
+    <el-table-column width="70" show-overflow-tooltip property="area" label="地区"></el-table-column>
     <el-table-column width="125" show-overflow-tooltip property="A_name" label="导演演员姓名"></el-table-column>
     <el-table-column width="120" show-overflow-tooltip property="want" label="想看人数"></el-table-column>
     <el-table-column width="120" show-overflow-tooltip property="W_long" label="时长"></el-table-column>
@@ -66,6 +67,7 @@
       <el-input v-model="form.M_type" auto-complete="off"></el-input>
     </el-form-item>
     <el-form-item label="评分" label-width="100px"><el-input v-model="form.M_grade" auto-complete="off"></el-input></el-form-item>
+    <el-form-item label="地区" label-width="100px"><el-input v-model="form.area" auto-complete="off"></el-input></el-form-item>
      <el-form-item label="导演演员姓名" label-width="100px"><el-input v-model="form.A_name" auto-complete="off"></el-input></el-form-item>
       <el-form-item label="想看人数" label-width="100px"><el-input v-model="form.want" auto-complete="off"></el-input></el-form-item>
          <el-form-item label="时长" label-width="100px"><el-input v-model="form.W_long" auto-complete="off"></el-input></el-form-item>
@@ -111,7 +113,7 @@
         },
         data() {
             return {
-                visible:false,
+                visible: false,
                 checkedID: '',
                 serinput: '',
                 select: '',
@@ -140,32 +142,32 @@
         },
         methods: {
             //            上传电影图片
-            handle(file, fileList){
-                let tempPath = file.replace(/\\/g, "/").replace('public','.')
+            handle(file, fileList) {
+                let tempPath = file.replace(/\\/g, "/").replace('public/', '/')
                 this.fileList.push(tempPath)
-                this.form.M_cover=this.fileList
+                this.form.M_cover = this.fileList
             },
             handleRemove(file, fileList) {
-                let tempPath = file.response.replace(/\\/g, "/").replace('public','.');
-                let newary=this.fileList.filter((ary)=>{
-                 return ary!=tempPath
-             })
-                this.fileList=newary
-                this.form.M_cover=newary
+                let tempPath = file.response.replace(/\\/g, "/").replace('public/', '/');
+                let newary = this.fileList.filter((ary) => {
+                    return ary != tempPath
+                })
+                this.fileList = newary
+                this.form.M_cover = newary
             },
             //            上传导演任务图片
-            actorhandle(file, fileList){
-                let tempPath = file.replace(/\\/g, "/").replace('public','.')
+            actorhandle(file, fileList) {
+                let tempPath = file.replace(/\\/g, "/").replace('public/', '/')
                 this.actorfileList.push(tempPath)
-                this.form.A_img=this.actorfileList
+                this.form.A_img = this.actorfileList
             },
             actorhandleRemove(file, fileList) {
-                let tempPath = file.response.replace(/\\/g, "/").replace('public','.');
-                let newary=this.actorfileList.filter((ary)=>{
-                 return ary!=tempPath
-             })
-                this.actorfileList=newary
-                this.form.A_img=newary
+                let tempPath = file.response.replace(/\\/g, "/").replace('public/', '/');
+                let newary = this.actorfileList.filter((ary) => {
+                    return ary != tempPath
+                })
+                this.actorfileList = newary
+                this.form.A_img = newary
             },
             //            搜索
             searchMovie() {
@@ -185,8 +187,8 @@
                             }
                         })
                     }
-                }else{
-                    
+                } else {
+
                 }
             },
             //            选中
@@ -194,12 +196,12 @@
                 this.$refs.singleTable.setCurrentRow(row);
             },
             handleCurrentChange(val) {
-//                if(val._id){
-//                let id=val._id
+                //                if(val._id){
+                //                let id=val._id
                 this.form = val
-//                this.checkedID = id
+                //                this.checkedID = id
                 this.currentRow = val
-//                }
+                //                }
             },
             //            添加页面
             addMoviePage() {
@@ -217,7 +219,7 @@
                     "box_office": "",
                     "M_cover": "",
                     "A_img": '',
-                    '_id':''
+                    '_id': ''
                 }
                 this.dialogFormVisible = true;
                 this.addbtn = true;
@@ -225,10 +227,11 @@
             },
             //            更新页面
             updatePage() {
-                if(this.form._id){
-                this.dialogFormVisible = true;
-                this.addbtn = false;
-                this.updatebtn = true;}
+                if (this.form._id) {
+                    this.dialogFormVisible = true;
+                    this.addbtn = false;
+                    this.updatebtn = true;
+                }
             },
             //            更新
             updatemovie() {
@@ -237,13 +240,13 @@
                     type: 'UPDATEMOVIE',
                     item: this.form,
                 })
-                this.form=''
+                this.form = ''
             },
             //            添加
             addmovie() {
                 this.dialogFormVisible = false;
-                this.fileList=[];
-                this.actorfileList=[];
+                this.fileList = [];
+                this.actorfileList = [];
                 this.$store.dispatch({
                     type: 'ADDMOVIE',
                     item: this.form
@@ -257,25 +260,25 @@
                 })
             },
             //            删除
-            open(){
-                if(this.form._id){
-                    this.visible=false
-                }else{
-                    this.visible=true
+            open() {
+                if (this.form._id) {
+                    this.visible = false
+                } else {
+                    this.visible = true
                     this.$message({
-                    type: 'warning',
-                    message: '请选择数据'
-                  })
+                        type: 'warning',
+                        message: '请选择数据'
+                    })
                 }
             },
             delmovue() {
-                this.visible=false
+                this.visible = false
                 this.$store.dispatch({
                     type: 'DELMOVIE',
                     id: this.form._id
                 })
-                this.checkedID=''
-               this.form = {
+                this.checkedID = ''
+                this.form = {
                     "M_name": "",
                     "E_name": "",
                     "M_type": "",
@@ -289,7 +292,7 @@
                     "box_office": "",
                     "M_cover": "",
                     "A_img": '',
-                   '_id':''
+                    '_id': ''
                 }
             }
         },
@@ -317,32 +320,39 @@
     .addinput {
         margin-top: 66px
     }
-    .block{
+
+    .block {
         margin-left: 40%;
         margin-top: 20px
     }
+
     .addinput input {
         width: 200px;
         float: left
     }
-    .text{
+
+    .text {
         width: 500px;
     }
-    .upload-demo{
-         width: 200px;
+
+    .upload-demo {
+        width: 200px;
     }
-    .upload{
+
+    .upload {
         float: left;
         width: 30%;
         margin-left: 15%;
-            
     }
-    .imges{
-         width: 400px;
+
+    .imges {
+        width: 400px;
     }
-    .btnblock{
+
+    .btnblock {
         clear: both;
-        padding-top:30px;
+        padding-top: 30px;
         margin-left: 40%
     }
+
 </style>
